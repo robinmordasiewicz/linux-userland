@@ -1,7 +1,8 @@
 ---
 - name: "Linux userland config"
   hosts: localhost
-  become: false
+  become: true
+  become_user: ubuntu
   connection: local
   gather_facts: true
 
