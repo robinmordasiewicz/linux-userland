@@ -13,11 +13,6 @@
         mode: '0644'
         access_time: preserve
         modification_time: preserve
-    - name: byobu preferences directory
-      file:
-        path: "~/.byobu"
-        state: directory
-        mode: '0755'
     - name: disable byobu welcome message
       file:
         path: "~/.byobu/.welcome-displayed"
