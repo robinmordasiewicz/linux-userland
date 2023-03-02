@@ -9,18 +9,16 @@
     - name: Hushlogin
       file:
         path: "~/.hushlogin"
-        state: touch
+        state: file
         mode: '0644'
-        changed_when: False
     - name: byobu preferences directory
       file:
         path: "~/.byobu"
         state: directory
         mode: '0755'
-        changed_when: False
     - name: disable byobu welcome message
       file:
         path: "~/.byobu/.welcome-displayed"
-        state: touch
+        state: file
         mode: '0644'
         changed_when: False
