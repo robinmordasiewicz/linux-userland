@@ -1,0 +1,13 @@
+---
+- name: "Linux userland config"
+  hosts: localhost
+  become: false
+  connection: local
+  gather_facts: true
+
+- hosts: all
+  tasks:
+  - name: 
+    file: .hushlogin
+      path: "~/.hushlogin"
+      state: touch
