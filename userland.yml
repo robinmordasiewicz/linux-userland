@@ -15,7 +15,7 @@
       file:
         path: "~/.byobu"
         state: directory
-        mode: "0755'
+        mode: '0755'
     - name: disable byobu welcome message
       file:
         path: "~/.byobu/.welcome-displayed"
