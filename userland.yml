@@ -26,9 +26,12 @@
         mode: '0644'
         access_time: preserve
         modification_time: preserve
-  tasks:
     - name: change shell to zsh
       become: yes
       user:
         name: "{{ the_user }}"
         shell: /usr/bin/zsh
+    - name: Set login shell of user {{ ansible_env.USER }} to `/usr/bin/zsh` with `usermod`
+      ansible.builtin.command: usermod --shell /usr/bin/zsh {{ ansible_env.USER }}
+      become: true
+      changed_when: false
