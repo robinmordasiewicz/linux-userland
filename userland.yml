@@ -4,8 +4,20 @@
   become: true
   become_user: ubuntu
   gather_facts: true
-  vars:
-    the_user: "{{ ansible_user_id }}"
+  roles:
+    - role: gantsign.oh-my-zsh
+      users:
+        - username: "ubuntu"
+          oh_my_zsh:
+            theme: agnoster
+            plugins:
+              - git
+              - zsh-syntax-highlighting
+              - zsh-autosuggestions
+              - zsh-completions
+              - terraform
+              - docker
+      loop: "{{ userlist }}"
   tasks:
     - name: Hushlogin
       file:
