@@ -17,7 +17,6 @@
               - zsh-completions
               - terraform
               - docker
-      loop: "{{ userlist }}"
   tasks:
     - name: Hushlogin
       file:
