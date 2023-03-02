@@ -28,6 +28,7 @@
         modification_time: preserve
   tasks:
     - name: change shell to zsh
+      become: yes
       user:
         name: "{{ the_user }}"
         shell: /usr/bin/zsh
