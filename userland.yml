@@ -11,3 +11,8 @@
         path: "~/.hushlogin"
         state: touch
         mode: '0644'
+    - name: Byobu
+      file:
+        path: "~/.byobu/.welcome-displayed"
+        state: touch
+        mode: '0644'
