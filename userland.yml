@@ -4,7 +4,8 @@
   become: true
   become_user: ubuntu
   gather_facts: true
-
+  vars:
+    the_user: "{{ ansible_user_id }}"
   tasks:
     - name: Hushlogin
       file:
@@ -25,3 +26,8 @@
         mode: '0644'
         access_time: preserve
         modification_time: preserve
+  tasks:
+    - name: change shell to zsh
+      user:
+        name: "{{ the_user }}"
+        shell: /usr/bin/zsh
