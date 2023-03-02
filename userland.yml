@@ -9,8 +9,10 @@
     - name: Hushlogin
       file:
         path: "~/.hushlogin"
-        state: file
+        state: touch
         mode: '0644'
+        access_time: preserve
+        modification_time: preserve
     - name: byobu preferences directory
       file:
         path: "~/.byobu"
@@ -19,6 +21,7 @@
     - name: disable byobu welcome message
       file:
         path: "~/.byobu/.welcome-displayed"
-        state: file
+        state: touch
         mode: '0644'
-        changed_when: False
+        access_time: preserve
+        modification_time: preserve
