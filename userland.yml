@@ -6,9 +6,9 @@
   connection: local
   gather_facts: true
 
-- hosts: all
   tasks:
-  - name: 
-    file: .hushlogin
-      path: "~/.hushlogin"
-      state: touch
+    - name: Hushlogin
+      file:
+        path: "~/.hushlogin"
+        state: touch
+        mode: '0644'
