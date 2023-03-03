@@ -20,7 +20,6 @@
               - cp
               - fzf
               - gh
-              - git-prompt
               - gitignore
               - helm
               - history
