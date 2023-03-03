@@ -23,14 +23,14 @@
         mode: '0644'
         access_time: preserve
         modification_time: preserve
-        user: ubuntu
+        owner: ubuntu
         group: ubuntu
     - name: byobu preferences directory
       file:
         path: "/home/ubuntu/.byobu"
         state: directory
         mode: '0755'
-        user: ubuntu
+        owner: ubuntu
         group: ubuntu
     - name: disable byobu welcome message
       file:
@@ -39,6 +39,6 @@
         mode: '0644'
         access_time: preserve
         modification_time: preserve
-        user: ubuntu
+        owner: ubuntu
         group: ubuntu
 
