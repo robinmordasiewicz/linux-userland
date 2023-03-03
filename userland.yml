@@ -52,4 +52,41 @@
         dest: /home/ubuntu/.oh-my-zsh/plugins/zsh-syntax-highlighting
       become: yes
       become_user: ubuntu
-   
+    - name: Ensure .vim/{autoload,bundle} directory exists
+      file:
+        path: "{{ item }}"
+        state: directory
+        recurse: no
+        mode: 0750
+      loop:
+        - "/home/ubuntu/.vim"
+        - "/home/ubuntu/.vim/autoload"
+        - "/home/ubuntu/.vim/bundle"
+    - name: Ensure Pathogen is in place
+      get_url:
+        dest: "/home/ubuntu/.vim/autoload/pathogen.vim"
+        url: https://tpo.pe/pathogen.vim
+      become: yes
+      become_user: ubuntu
+    - name: Deploy plugins
+      git:
+        dest: "/home/ubuntu/.vim/bundle/{{ item.name }}"
+        repo: "{{ item.url }}"
+        clone: yes
+        update: yes
+        recursive: no
+      become: yes
+      become_user: ubuntu
+      loop:
+      - name: vim-airline
+        url: https://github.com/vim-airline/vim-airline
+      - name: nerdtree
+        url: https://github.com/preservim/nerdtree
+      - name: fzf-vim
+        url: https://github.com/junegunn/fzf.vim
+      - name: vim-gitgutter
+        url: https://github.com/airblade/vim-gitgutter
+      - name: vim-fugitive
+        url: https://github.com/tpope/vim-fugitive
+      - name: vim-floaterm
+        url: https://github.com/voldikss/vim-floaterm
