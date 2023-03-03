@@ -2,10 +2,8 @@
 - name: "Linux userland config"
   hosts: localhost
   gather_facts: true
-  become_user: ubuntu
   roles:
     - role: gantsign.oh-my-zsh
-      become: true
       users:
         - username: "ubuntu"
           oh_my_zsh:
@@ -19,25 +17,28 @@
               - docker
   tasks:
     - name: Hushlogin
-      become: true
       file:
         path: "/home/ubuntu/.hushlogin"
         state: touch
         mode: '0644'
         access_time: preserve
         modification_time: preserve
+        user: ubuntu
+        group: ubuntu
     - name: byobu preferences directory
-      become: true
       file:
         path: "/home/ubuntu/.byobu"
         state: directory
         mode: '0755'
+        user: ubuntu
+        group: ubuntu
     - name: disable byobu welcome message
-      become: true  
       file:
         path: "/home/ubuntu/.byobu/.welcome-displayed"
         state: touch
         mode: '0644'
         access_time: preserve
         modification_time: preserve
+        user: ubuntu
+        group: ubuntu
 
