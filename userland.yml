@@ -12,7 +12,6 @@
               - git
               - zsh-syntax-highlighting
               - zsh-autosuggestions
-              - zsh-completions
               - terraform
               - docker
   tasks:
