@@ -14,6 +14,21 @@
               - zsh-autosuggestions
               - terraform
               - docker
+              - kubectl
+              - ansible
+              - colorize
+              - cp
+              - fzf
+              - gh
+              - git-prompt
+              - gitignore
+              - helm
+              - history
+              - jsontools
+              - sudo
+              - ubuntu
+              - zsh-interactive-cd
+              - zsh-navigation-tools
   tasks:
     - name: Hushlogin
       file:
@@ -46,7 +61,7 @@
         dest: /home/ubuntu/.oh-my-zsh/plugins/zsh-autosuggestions
       become: yes
       become_user: ubuntu
-    - name: Install zsh autosuggestions
+    - name: Install zsh syntax-highlighting
       ansible.builtin.git:
         repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
         dest: /home/ubuntu/.oh-my-zsh/plugins/zsh-syntax-highlighting
