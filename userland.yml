@@ -69,18 +69,27 @@
         dest: /home/ubuntu/.oh-my-zsh/plugins/zsh-autosuggestions
       become: yes
       become_user: ubuntu
+      force: yes
+      register: zsh-autosuggestions
+      changed_when: ( zsh-autosuggestions.remote_url_changed is not defined or zsh-autosuggestions.remote_url_changed ) 
     - name: Install zsh syntax-highlighting
       ansible.builtin.git:
         repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
         dest: /home/ubuntu/.oh-my-zsh/plugins/zsh-syntax-highlighting
       become: yes
       become_user: ubuntu
+      force: yes
+      register: zsh-syntax-highlighting
+      changed_when: ( zsh-syntax-highlighting.remote_url_changed is not defined or zsh-syntax-highlighting.remote_url_changed ) 
     - name: Install zsh vscode
       ansible.builtin.git:
         repo: https://github.com/valentinocossar/vscode.git
         dest: /home/ubuntu/.oh-my-zsh/plugins/vscode
       become: yes
       become_user: ubuntu
+      force: yes
+      register: vscode
+      changed_when: ( vscode.remote_url_changed is not defined or vscode.remote_url_changed ) 
     - name: Ensure .vim/{autoload,bundle} directory exists
       file:
         path: "{{ item }}"
