@@ -18,19 +18,19 @@
   tasks:
     - name: Hushlogin
       file:
-        path: "~/.hushlogin"
+        path: "/home/ubuntu/.hushlogin"
         state: touch
         mode: '0644'
         access_time: preserve
         modification_time: preserve
     - name: byobu preferences directory
       file:
-        path: "~/.byobu"
+        path: "/home/ubuntu/.byobu"
         state: directory
         mode: '0755'
     - name: disable byobu welcome message
       file:
-        path: "~/.byobu/.welcome-displayed"
+        path: "/home/ubuntu/.byobu/.welcome-displayed"
         state: touch
         mode: '0644'
         access_time: preserve
