@@ -58,8 +58,8 @@
         state: directory
         recurse: no
         mode: 0750
-      owner: ubuntu
-      group: ubuntu
+        owner: ubuntu
+        group: ubuntu
       loop:
         - "/home/ubuntu/.vim"
         - "/home/ubuntu/.vim/autoload"
