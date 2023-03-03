@@ -92,3 +92,11 @@
         url: https://github.com/tpope/vim-fugitive
       - name: vim-floaterm
         url: https://github.com/voldikss/vim-floaterm
+    - name: Ensure .vimrc config in place
+      copy:
+        src: vimrc
+        dest: "/home/ubuntu/.vimrc"
+        backup: yes
+        mode: 0640
+        owner: ubuntu
+        group: ubuntu
