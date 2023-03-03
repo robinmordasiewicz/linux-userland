@@ -30,6 +30,14 @@
               - zsh-navigation-tools
               - vscode
   tasks:
+    - name: Configure Ansible
+      become_user: ubuntu
+      become: yes
+      ini_file:
+        path: /home/ubuntu/ansible.cfg
+        section: "colors"
+        option: "verbose"
+        value: "green"
     - name: Hushlogin
       file:
         path: "/home/ubuntu/.hushlogin"
