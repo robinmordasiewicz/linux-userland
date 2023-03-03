@@ -70,8 +70,8 @@
         force: yes
       become: yes
       become_user: ubuntu
-      register: zsh-autosuggestions
-      changed_when: ( zsh-autosuggestions.remote_url_changed is not defined or zsh-autosuggestions.remote_url_changed ) 
+      register: autosuggestions
+      changed_when: ( autosuggestions.remote_url_changed is not defined or autosuggestions.remote_url_changed ) 
     - name: Install zsh syntax-highlighting
       ansible.builtin.git:
         repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
@@ -79,8 +79,8 @@
         force: yes
       become: yes
       become_user: ubuntu
-      register: zsh-syntax-highlighting
-      changed_when: ( zsh-syntax-highlighting.remote_url_changed is not defined or zsh-syntax-highlighting.remote_url_changed ) 
+      register: syntaxhighlighting
+      changed_when: ( syntaxhighlighting.remote_url_changed is not defined or syntaxhighlighting.remote_url_changed ) 
     - name: Install zsh vscode
       ansible.builtin.git:
         repo: https://github.com/valentinocossar/vscode.git
