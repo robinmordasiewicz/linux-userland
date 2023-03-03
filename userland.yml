@@ -5,7 +5,7 @@
   become_user: ubuntu
   roles:
     - role: gantsign.oh-my-zsh
-      become: false
+      become: true
       users:
         - username: "ubuntu"
           oh_my_zsh:
