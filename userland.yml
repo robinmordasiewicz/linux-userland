@@ -81,7 +81,7 @@
       become_user: ubuntu
       register: syntaxhighlighting
       changed_when: ( syntaxhighlighting.remote_url_changed is not defined or syntaxhighlighting.remote_url_changed ) 
-    - name: Install zsh vscode
+    - name: Install vscode
       ansible.builtin.git:
         repo: https://github.com/valentinocossar/vscode.git
         dest: /home/ubuntu/.oh-my-zsh/plugins/vscode
