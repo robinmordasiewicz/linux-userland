@@ -84,7 +84,7 @@
     - name: Install vscode
       ansible.builtin.git:
         repo: https://github.com/valentinocossar/vscode.git
-        dest: /home/ubuntu/.oh-my-zsh/plugins/vscode
+        dest: /home/ubuntu/.oh-my-zsh/plugins/vscode2
         force: yes
       become: yes
       become_user: ubuntu
