@@ -67,6 +67,12 @@
         dest: /home/ubuntu/.oh-my-zsh/plugins/zsh-syntax-highlighting
       become: yes
       become_user: ubuntu
+    - name: Install zsh vscode
+      ansible.builtin.git:
+        repo: https://github.com/valentinocossar/vscode.git
+        dest: /home/ubuntu/.oh-my-zsh/plugins/vscode
+      become: yes
+      become_user: ubuntu
     - name: Ensure .vim/{autoload,bundle} directory exists
       file:
         path: "{{ item }}"
