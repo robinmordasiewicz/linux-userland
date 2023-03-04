@@ -46,10 +46,14 @@
         access_time: preserve
         modification_time: preserve
         owner: ubuntu
-
-              git config --global user.name "Your Name"
-    git config --global user.email you@example.com
-
+    - name: github config username
+      git_config:
+        name: user.name
+        value: "Robin Mordasiewicz"
+    - name: git config 
+      git_config:
+        name: user.email
+        value: "robin@mordasiewicz.com"
     - name: byobu preferences directory
       file:
         path: "/home/ubuntu/.byobu"
