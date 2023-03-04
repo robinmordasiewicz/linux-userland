@@ -5,7 +5,7 @@
   roles:
     - role: gantsign.oh-my-zsh
       users:
-        - username: "ubuntu"
+        - username: "robin"
           oh_my_zsh:
             theme: agnoster
             plugins:
@@ -35,16 +35,16 @@
               - z
   tasks:
     - name: Configure Ansible
-      become_user: ubuntu
+      become_user: robin
       become: yes
       ini_file:
-        path: /home/ubuntu/ansible.cfg
+        path: /home/robin/ansible.cfg
         section: "colors"
         option: "verbose"
         value: "green"
     - name: Hushlogin
       file:
-        path: "/home/ubuntu/.hushlogin"
+        path: "/home/robin/.hushlogin"
         state: touch
         mode: '0644'
         access_time: preserve
@@ -62,13 +62,13 @@
           - {name: "core.editor",   value: "vim" }
     - name: byobu preferences directory
       file:
-        path: "/home/ubuntu/.byobu"
+        path: "/home/robin/.byobu"
         state: directory
         mode: '0755'
         owner: ubuntu
     - name: disable byobu welcome message
       file:
-        path: "/home/ubuntu/.byobu/.welcome-displayed"
+        path: "/home/robin/.byobu/.welcome-displayed"
         state: touch
         mode: '0644'
         access_time: preserve
@@ -77,7 +77,7 @@
     - name: Install zsh vim-mode
       ansible.builtin.git:
         repo: https://github.com/jeffreytse/zsh-vi-mode.git
-        dest: /home/ubuntu/.oh-my-zsh/plugins/zsh-vi-mode
+        dest: /home/robin/.oh-my-zsh/plugins/zsh-vi-mode
         force: yes
       become: yes
       become_user: ubuntu
@@ -86,7 +86,7 @@
     - name: Install zsh autosuggestions
       ansible.builtin.git:
         repo: https://github.com/zsh-users/zsh-autosuggestions.git
-        dest: /home/ubuntu/.oh-my-zsh/plugins/zsh-autosuggestions
+        dest: /home/robin/.oh-my-zsh/plugins/zsh-autosuggestions
         force: yes
       become: yes
       become_user: ubuntu
@@ -95,7 +95,7 @@
     - name: Install zsh syntax-highlighting
       ansible.builtin.git:
         repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-        dest: /home/ubuntu/.oh-my-zsh/plugins/zsh-syntax-highlighting
+        dest: /home/robin/.oh-my-zsh/plugins/zsh-syntax-highlighting
         force: yes
       become: yes
       become_user: ubuntu
@@ -109,18 +109,18 @@
         mode: 0750
         owner: ubuntu
       loop:
-        - "/home/ubuntu/.vim"
-        - "/home/ubuntu/.vim/autoload"
-        - "/home/ubuntu/.vim/bundle"
+        - "/home/robin/.vim"
+        - "/home/robin/.vim/autoload"
+        - "/home/robin/.vim/bundle"
     - name: Ensure Pathogen is in place
       get_url:
-        dest: "/home/ubuntu/.vim/autoload/pathogen.vim"
+        dest: "/home/robin/.vim/autoload/pathogen.vim"
         url: https://tpo.pe/pathogen.vim
       become: yes
       become_user: ubuntu
     - name: Deploy plugins
       git:
-        dest: "/home/ubuntu/.vim/bundle/{{ item.name }}"
+        dest: "/home/robin/.vim/bundle/{{ item.name }}"
         repo: "{{ item.url }}"
         clone: yes
         update: yes
@@ -143,7 +143,7 @@
     - name: Ensure .vimrc config in place
       copy:
         src: vimrc
-        dest: "/home/ubuntu/.vimrc"
+        dest: "/home/robin/.vimrc"
         backup: yes
         mode: 0640
         owner: ubuntu
