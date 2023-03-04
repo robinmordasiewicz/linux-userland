@@ -46,14 +46,12 @@
         access_time: preserve
         modification_time: preserve
         owner: ubuntu
-        group: ubuntu
     - name: byobu preferences directory
       file:
         path: "/home/ubuntu/.byobu"
         state: directory
         mode: '0755'
         owner: ubuntu
-        group: ubuntu
     - name: disable byobu welcome message
       file:
         path: "/home/ubuntu/.byobu/.welcome-displayed"
@@ -62,7 +60,6 @@
         access_time: preserve
         modification_time: preserve
         owner: ubuntu
-        group: ubuntu
     - name: Install zsh autosuggestions
       ansible.builtin.git:
         repo: https://github.com/zsh-users/zsh-autosuggestions.git
@@ -88,7 +85,6 @@
         recurse: no
         mode: 0750
         owner: ubuntu
-        group: ubuntu
       loop:
         - "/home/ubuntu/.vim"
         - "/home/ubuntu/.vim/autoload"
@@ -128,4 +124,3 @@
         backup: yes
         mode: 0640
         owner: ubuntu
-        group: ubuntu
