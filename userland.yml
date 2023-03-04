@@ -46,16 +46,16 @@
         access_time: preserve
         modification_time: preserve
         owner: ubuntu
-    - name: github config username
+    - name: GIT config
       git_config:
-        name: user.name
-        value: "Robin Mordasiewicz"
-        scope: local
-    - name: git config 
-      git_config:
-        name: user.email
-        value: "robin@mordasiewicz.com"
-        scope: local
+          name: "{{ item.name }}"
+          scope: global
+          value: "{{ item.value }}"
+      with_items:
+          - {name: "user.name",  value: "Robin Mordasiewicz" }
+          - {name: "user.email", value: "robin@mordasiewicz.com" }
+          - {name: "ui.color",   value: "True" }
+          - {name: "core.editor",   value: "vim" }
     - name: byobu preferences directory
       file:
         path: "/home/ubuntu/.byobu"
