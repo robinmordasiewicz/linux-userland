@@ -30,6 +30,9 @@
               - zsh-navigation-tools
               - vscode
               - zsh-vi-mode
+              - brew
+              - osx
+              - z
   tasks:
     - name: Configure Ansible
       become_user: ubuntu
