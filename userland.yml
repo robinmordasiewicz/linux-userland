@@ -29,7 +29,7 @@
               - zsh-interactive-cd
               - zsh-navigation-tools
               - vscode
-              - vi-mode
+              - zsh-vi-mode
   tasks:
     - name: Configure Ansible
       become_user: ubuntu
@@ -71,6 +71,15 @@
         access_time: preserve
         modification_time: preserve
         owner: ubuntu
+    - name: Install zsh vim-mode
+      ansible.builtin.git:
+        repo: https://github.com/jeffreytse/zsh-vi-mode.git
+        dest: /home/ubuntu/.oh-my-zsh/plugins/zsh-vi-mode
+        force: yes
+      become: yes
+      become_user: ubuntu
+      register: vimode
+      changed_when: ( vimode.remote_url_changed is not defined or vimode.remote_url_changed ) 
     - name: Install zsh autosuggestions
       ansible.builtin.git:
         repo: https://github.com/zsh-users/zsh-autosuggestions.git
