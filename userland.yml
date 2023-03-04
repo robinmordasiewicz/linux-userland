@@ -2,6 +2,33 @@
 - name: "Linux userland config"
   hosts: localhost
   gather_facts: true
+  roles:
+    - role: gantsign.oh-my-zsh
+      users:
+        - username: "ubuntu"
+          oh_my_zsh:
+            theme: agnoster
+            plugins:
+              - git
+              - zsh-syntax-highlighting
+              - zsh-autosuggestions
+              - terraform
+              - docker
+              - kubectl
+              - ansible
+              - colorize
+              - cp
+              - fzf
+              - gh
+              - gitignore
+              - helm
+              - history
+              - jsontools
+              - sudo
+              - ubuntu
+              - zsh-interactive-cd
+              - zsh-navigation-tools
+              - vscode
   tasks:
     - name: Configure Ansible
       become_user: ubuntu
