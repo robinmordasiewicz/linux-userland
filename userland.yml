@@ -29,6 +29,7 @@
               - zsh-interactive-cd
               - zsh-navigation-tools
               - vscode
+              - vi-mode
   tasks:
     - name: Configure Ansible
       become_user: ubuntu
