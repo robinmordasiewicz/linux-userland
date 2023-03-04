@@ -31,7 +31,7 @@
               - vscode
               - zsh-vi-mode
               - brew
-              - macosx
+              - macos
               - z
   tasks:
     - name: Configure Ansible
