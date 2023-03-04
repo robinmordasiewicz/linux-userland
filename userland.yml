@@ -50,10 +50,12 @@
       git_config:
         name: user.name
         value: "Robin Mordasiewicz"
+        scope: local
     - name: git config 
       git_config:
         name: user.email
         value: "robin@mordasiewicz.com"
+        scope: local
     - name: byobu preferences directory
       file:
         path: "/home/ubuntu/.byobu"
