@@ -39,7 +39,7 @@
     - name: Configure Ansible
       become: yes
       ini_file:
-        path: {{ HOME }}/ansible.cfg
+        path: "{{ HOME }}/ansible.cfg"
         section: "colors"
         option: "verbose"
         value: "green"
