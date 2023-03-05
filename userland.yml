@@ -37,7 +37,6 @@
               - z
   tasks:
     - name: Configure Ansible
-      become: yes
       ini_file:
         path: "{{ HOME }}/ansible.cfg"
         section: "colors"
