@@ -99,7 +99,6 @@
         state: directory
         recurse: no
         mode: 0750
-        owner: ubuntu
       loop:
         - "{{ HOME }}/.vim"
         - "{{ HOME }}/.vim/autoload"
@@ -134,4 +133,3 @@
         dest: "{{ HOME }}/.vimrc"
         backup: yes
         mode: 0640
-        owner: ubuntu
