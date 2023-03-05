@@ -7,7 +7,7 @@
   roles:
     - role: gantsign.oh-my-zsh
       users:
-        - username: "robin"
+        - username: "{{ ansible_user_id }}"
           oh_my_zsh:
             theme: agnoster
             plugins:
