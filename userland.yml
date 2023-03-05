@@ -8,6 +8,7 @@
     - role: gantsign.oh-my-zsh
       users:
         - username: "{{ ansible_user_id }}"
+          become: true
           oh_my_zsh:
             theme: agnoster
             plugins:
