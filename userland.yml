@@ -2,6 +2,8 @@
 - name: "Linux userland config"
   hosts: localhost
   gather_facts: true
+  vars:
+      HOME: "{{ lookup('env', 'HOME') }}"
   roles:
     - role: gantsign.oh-my-zsh
       users:
@@ -35,21 +37,19 @@
               - z
   tasks:
     - name: Configure Ansible
-      become_user: robin
       become: yes
       ini_file:
-        path: /home/robin/ansible.cfg
+        path: {{ HOME }}/ansible.cfg
         section: "colors"
         option: "verbose"
         value: "green"
     - name: Hushlogin
       file:
-        path: "/home/robin/.hushlogin"
+        path: "{{ HOME }}/.hushlogin"
         state: touch
         mode: '0644'
         access_time: preserve
         modification_time: preserve
-        owner: ubuntu
     - name: GIT config
       git_config:
           name: "{{ item.name }}"
@@ -62,43 +62,35 @@
           - {name: "core.editor",   value: "vim" }
     - name: byobu preferences directory
       file:
-        path: "/home/robin/.byobu"
+        path: "{{ HOME }}/.byobu"
         state: directory
         mode: '0755'
-        owner: ubuntu
     - name: disable byobu welcome message
       file:
-        path: "/home/robin/.byobu/.welcome-displayed"
+        path: "{{ HOME }}/.byobu/.welcome-displayed"
         state: touch
         mode: '0644'
         access_time: preserve
         modification_time: preserve
-        owner: ubuntu
     - name: Install zsh vim-mode
       ansible.builtin.git:
         repo: https://github.com/jeffreytse/zsh-vi-mode.git
-        dest: /home/robin/.oh-my-zsh/plugins/zsh-vi-mode
+        dest: {{ HOME }}/.oh-my-zsh/plugins/zsh-vi-mode
         force: yes
-      become: yes
-      become_user: ubuntu
       register: vimode
       changed_when: ( vimode.remote_url_changed is not defined or vimode.remote_url_changed ) 
     - name: Install zsh autosuggestions
       ansible.builtin.git:
         repo: https://github.com/zsh-users/zsh-autosuggestions.git
-        dest: /home/robin/.oh-my-zsh/plugins/zsh-autosuggestions
+        dest: {{ HOME }}/.oh-my-zsh/plugins/zsh-autosuggestions
         force: yes
-      become: yes
-      become_user: ubuntu
       register: autosuggestions
       changed_when: ( autosuggestions.remote_url_changed is not defined or autosuggestions.remote_url_changed ) 
     - name: Install zsh syntax-highlighting
       ansible.builtin.git:
         repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-        dest: /home/robin/.oh-my-zsh/plugins/zsh-syntax-highlighting
+        dest: {{ HOME }}/.oh-my-zsh/plugins/zsh-syntax-highlighting
         force: yes
-      become: yes
-      become_user: ubuntu
       register: syntaxhighlighting
       changed_when: ( syntaxhighlighting.remote_url_changed is not defined or syntaxhighlighting.remote_url_changed ) 
     - name: Ensure .vim/{autoload,bundle} directory exists
@@ -109,24 +101,20 @@
         mode: 0750
         owner: ubuntu
       loop:
-        - "/home/robin/.vim"
-        - "/home/robin/.vim/autoload"
-        - "/home/robin/.vim/bundle"
+        - "{{ HOME }}/.vim"
+        - "{{ HOME }}/.vim/autoload"
+        - "{{ HOME }}/.vim/bundle"
     - name: Ensure Pathogen is in place
       get_url:
-        dest: "/home/robin/.vim/autoload/pathogen.vim"
+        dest: "{{ HOME }}/.vim/autoload/pathogen.vim"
         url: https://tpo.pe/pathogen.vim
-      become: yes
-      become_user: ubuntu
     - name: Deploy plugins
       git:
-        dest: "/home/robin/.vim/bundle/{{ item.name }}"
+        dest: "{{ HOME }}/.vim/bundle/{{ item.name }}"
         repo: "{{ item.url }}"
         clone: yes
         update: yes
         recursive: no
-      become: yes
-      become_user: ubuntu
       loop:
       - name: vim-airline
         url: https://github.com/vim-airline/vim-airline
@@ -143,7 +131,7 @@
     - name: Ensure .vimrc config in place
       copy:
         src: vimrc
-        dest: "/home/robin/.vimrc"
+        dest: "{{ HOME }}/.vimrc"
         backup: yes
         mode: 0640
         owner: ubuntu
