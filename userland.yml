@@ -36,6 +36,7 @@
               - brew
               - macos
               - z
+              - packer
   tasks:
     - name: Configure Ansible
       ini_file:
@@ -92,7 +93,14 @@
         dest: "{{ HOME }}/.oh-my-zsh/plugins/zsh-syntax-highlighting"
         force: yes
       register: syntaxhighlighting
-      changed_when: ( syntaxhighlighting.remote_url_changed is not defined or syntaxhighlighting.remote_url_changed ) 
+      changed_when: ( syntaxhighlighting.remote_url_changed is not defined or syntaxhighlighting.remote_url_changed )
+    - name: Install zsh packer
+      ansible.builtin.git:
+        repo: https://github.com/breakingpitt/zsh-packer.git ~/.oh-my-zsh/plugins/zsh-packer
+        dest: "{{ HOME }}/.oh-my-zsh/plugins/zsh-packer"
+        force: yes
+      register: packer
+      changed_when: ( packer.remote_url_changed is not defined or packer.remote_url_changed )
     - name: Ensure .vim/{autoload,bundle} directory exists
       file:
         path: "{{ item }}"
