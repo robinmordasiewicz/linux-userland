@@ -97,7 +97,7 @@
     - name: Install zsh packer
       ansible.builtin.git:
         repo: https://github.com/breakingpitt/zsh-packer.git
-        dest: "{{ HOME }}/.oh-my-zsh/plugins/zsh-packer"
+        dest: "{{ HOME }}/.oh-my-zsh/plugins/packer"
         force: yes
       register: packer
       changed_when: ( packer.remote_url_changed is not defined or packer.remote_url_changed )
