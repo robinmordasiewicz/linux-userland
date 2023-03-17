@@ -44,6 +44,14 @@
         section: "colors"
         option: "verbose"
         value: "green"
+#    - name: Install bottle python package
+#      pip:
+#        name: powerline-status
+#        xtra_args: --user
+#    - name: Install bottle python package
+#      pip:
+#        name: powerline-gitstatus
+#        xtra_args: --user
     - name: Hushlogin
       file:
         path: "{{ HOME }}/.hushlogin"
@@ -57,10 +65,19 @@
           scope: global
           value: "{{ item.value }}"
       with_items:
+          - {name: "credential 'https://github.com'.helper", value: "!/usr/bin/gh auth git-credential" 
           - {name: "user.name",  value: "Robin Mordasiewicz" }
           - {name: "user.email", value: "robin@mordasiewicz.com" }
           - {name: "ui.color",   value: "True" }
           - {name: "core.editor",   value: "vim" }
+          - {name: "core.excludesfile", value: "{{ HOME }}/.gitignore"}
+    - name: gitignore
+      file:
+        path: "{{ HOME }}/.gitignore"
+        state: touch
+        mode: '0644'
+        access_time: preserve
+        modification_time: preserve
     - name: byobu preferences directory
       file:
         path: "{{ HOME }}/.byobu"
@@ -139,5 +156,11 @@
       copy:
         src: vimrc
         dest: "{{ HOME }}/.vimrc"
+        backup: yes
+        mode: 0640
+    - name: Ensure .gitignore config in place
+      copy:
+        src: .gitignore
+        dest: "{{ HOME }}/.gitignore"
         backup: yes
         mode: 0640
