@@ -15,6 +15,7 @@
               - git
               - zsh-syntax-highlighting
               - zsh-autosuggestions
+              - zsh-dircolors-solarized
               - terraform
               - docker
               - kubectl
@@ -104,6 +105,13 @@
         force: yes
       register: autosuggestions
       changed_when: ( autosuggestions.remote_url_changed is not defined or autosuggestions.remote_url_changed ) 
+    - name: Install zsh zsh-dircolors-solarized
+      ansible.builtin.git:
+        repo: https://github.com/joel-porquet/zsh-dircolors-solarized
+        dest: "{{ HOME }}/.oh-my-zsh/plugins/zsh-dircolors-solarized"
+        force: yes
+      register: zshdircolorssolarized
+      changed_when: ( zshdircolorssolarized.remote_url_changed is not defined or zshdircolorssolarized.remote_url_changed )
     - name: Install zsh syntax-highlighting
       ansible.builtin.git:
         repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
