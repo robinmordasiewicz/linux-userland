@@ -66,7 +66,7 @@
           scope: global
           value: "{{ item.value }}"
       with_items:
-          - {name: "credential 'https://github.com'.helper", value: "!/usr/bin/gh auth git-credential" 
+          - {name: "credential.helper", value: "!/usr/bin/gh auth git-credential" 
           - {name: "user.name",  value: "Robin Mordasiewicz" }
           - {name: "user.email", value: "robin@mordasiewicz.com" }
           - {name: "ui.color",   value: "True" }
