@@ -38,7 +38,7 @@
               - macos
               - z
               - packer
-              - fzf
+              - vault
   tasks:
     - name: Configure Ansible
       ini_file:
