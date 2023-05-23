@@ -159,6 +159,16 @@
         url: https://github.com/tpope/vim-fugitive
       - name: vim-floaterm
         url: https://github.com/voldikss/vim-floaterm
+    - name: Ensure .vim/colors exists
+      file:
+        path: "{{ HOME }}/.vim/colors"
+        recurse: true
+        state: directory
+    - name: Download vim theme
+      get_url:
+        url: https://raw.githubusercontent.com/crusoexia/vim-monokai/master/colors/monokai.vim
+        dest: "{{ HOME }}/.vim/colors/monokai.vim"
+        mode: '0640'
     - name: Ensure .vimrc config in place
       copy:
         src: vimrc
@@ -182,3 +192,12 @@
         dest: "{{ HOME }}/GIT/fortiwebcloud-terraform"
         single_branch: yes
         version: main
+    - name: Ensure GIT directory exists
+      file:
+        path: "{{ HOME }}/GIT"
+        recurse: true
+        state: directory
+    - name: Clone fortiwebcloud terraform provider
+      git:
+        repo: https://github.com/fortinet/fortiwebcloud-terraform.git
+        dest: "{{ HOME }}/GIT/fortiwebcloud-terraform"

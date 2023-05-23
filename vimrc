@@ -2,7 +2,8 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
-colo darkblue
+"colo darkblue
+colo monokai
 
 " Configuration vim Airline
 set laststatus=2
