@@ -16,6 +16,8 @@
               - zsh-syntax-highlighting
               - zsh-autosuggestions
               - zsh-dircolors-solarized
+              - zsh-interactive-cd
+              - zsh-navigation-tools
               - terraform
               - docker
               - kubectl
@@ -30,12 +32,8 @@
               - jsontools
               - sudo
               - ubuntu
-              - zsh-interactive-cd
-              - zsh-navigation-tools
               - vscode
               - zsh-vi-mode
-              - brew
-              - macos
               - z
               - packer
               - vault
@@ -173,3 +171,14 @@
         dest: "{{ HOME }}/.gitignore"
         backup: yes
         mode: 0640
+    - name: Ensure GIT directory exists
+      file:
+        path: "{{ HOME }}/GIT"
+        recurse: true
+        state: directory
+    - name: Clone fortiwebcloud terraform provider
+      git:
+        repo: https://github.com/fortinet/fortiwebcloud-terraform.git
+        dest: "{{ HOME }}/GIT/fortiwebcloud-terraform"
+        single_branch: yes
+        version: main
