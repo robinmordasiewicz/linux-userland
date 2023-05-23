@@ -8,35 +8,34 @@
     - role: gantsign.oh-my-zsh
       users:
         - username: "{{ ansible_user_id }}"
-          become: true
           oh_my_zsh:
             theme: agnoster
             plugins:
+              - ansible
+              - colorize
+              - cp
+              - docker
+              - fzf
+              - gh
               - git
+              - gitignore
+              - helm
+              - history
+              - jsontools
+              - kubectl
+              - packer
+              - sudo
+              - terraform
+              - ubuntu
+              - vault
+              - vscode
+              - z
               - zsh-syntax-highlighting
               - zsh-autosuggestions
               - zsh-dircolors-solarized
               - zsh-interactive-cd
               - zsh-navigation-tools
-              - terraform
-              - docker
-              - kubectl
-              - ansible
-              - colorize
-              - cp
-              - fzf
-              - gh
-              - gitignore
-              - helm
-              - history
-              - jsontools
-              - sudo
-              - ubuntu
-              - vscode
               - zsh-vi-mode
-              - z
-              - packer
-              - vault
   tasks:
     - name: Configure Ansible
       ini_file:
