@@ -70,6 +70,7 @@
           - {name: "ui.color",   value: "True" }
           - {name: "core.editor",   value: "vim" }
           - {name: "core.excludesfile", value: "{{ HOME }}/.gitignore"}
+          - {name: "init.defaultBranch", value: "main" }
     - name: gitignore
       file:
         path: "{{ HOME }}/.gitignore"
