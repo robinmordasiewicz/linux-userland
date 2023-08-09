@@ -192,11 +192,6 @@
         dest: "{{ HOME }}/GIT/fortiwebcloud-terraform"
         single_branch: yes
         version: main
-    - name: Ensure GIT directory exists
-      file:
-        path: "{{ HOME }}/GIT"
-        recurse: true
-        state: directory
     - name: Clone fortiwebcloud terraform provider
       git:
         repo: https://github.com/fortinet/fortiwebcloud-terraform.git
