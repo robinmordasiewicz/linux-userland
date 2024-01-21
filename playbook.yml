@@ -9,7 +9,7 @@
       users:
         - username: "{{ ansible_user_id }}"
           oh_my_zsh:
-            theme: agnoster
+            theme: 'powerlevel10k/powerlevel10k'
             plugins:
               - cp
               - git
