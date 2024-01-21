@@ -85,7 +85,7 @@
     - name: Enable powerlevel10k settings
       lineinfile:
         path: "{{ HOME }}/.zshrc"
-        line: '[[ ! -f ~/.p10k  .zsh ]] || source ~/.p10k.zsh'
+        line: '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh'
         state: present
         create: true
     - name: Install zsh powerlevel10k
