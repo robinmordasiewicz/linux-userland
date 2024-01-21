@@ -76,6 +76,18 @@
         mode: '0644'
         access_time: preserve
         modification_time: preserve
+    - name: Ensure .p10k.zsh config in place
+      copy:
+        src: .p10k.zsh
+        dest: "{{ HOME }}/.p10k.zsh"
+        backup: yes
+        mode: 0640
+    - name: Enable powerlevel10k theme
+      lineinfile:
+        path: "{{ HOME }}/.zshrc
+        line: '[[ ! -f ~/.p10k  .zsh ]] || source ~/.p10k.zsh'
+        state: present
+        create: true
     - name: Install zsh powerlevel10k
       ansible.builtin.git:
         repo: https://github.com/romkatv/powerlevel10k.git
@@ -148,7 +160,7 @@
         mode: '0640'
     - name: Ensure .vimrc config in place
       copy:
-        src: vimrc
+        src: ".vimrc"
         dest: "{{ HOME }}/.vimrc"
         backup: yes
         mode: 0640
