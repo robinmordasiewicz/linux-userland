@@ -82,9 +82,9 @@
         dest: "{{ HOME }}/.p10k.zsh"
         backup: yes
         mode: 0640
-    - name: Enable powerlevel10k theme
+    - name: Enable powerlevel10k settings
       lineinfile:
-        path: "{{ HOME }}/.zshrc
+        path: "{{ HOME }}/.zshrc"
         line: '[[ ! -f ~/.p10k  .zsh ]] || source ~/.p10k.zsh'
         state: present
         create: true
