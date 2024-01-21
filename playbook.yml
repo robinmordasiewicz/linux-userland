@@ -76,6 +76,11 @@
         mode: '0644'
         access_time: preserve
         modification_time: preserve
+    - name: Install zsh powerlevel10k
+      ansible.builtin.git:
+        repo: https://github.com/romkatv/powerlevel10k.git
+        dest: "{{ HOME }}/.oh-my-zsh/themes/powerlevel10k"
+        force: yes
     - name: Install zsh vim-mode
       ansible.builtin.git:
         repo: https://github.com/jeffreytse/zsh-vi-mode.git
